@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic Input Fields</title>
+    <link rel="stylesheet" href="timetablegenerator.css" />
+    <style>
+      .container {
+  max-width: 1500px;
+  margin: 0 auto;
+  place-content: center;
+}
+
+#timetable {
+  margin: 0 auto; /* This will center the table horizontally */
+}
+
+      table {
+        border-collapse: collapse;
+        border:1px solid #dddddd;
+        margin:20px;
+        background-color: #fff;
+      }
+      table p{
+        font-size:30px;
+        font-weight:400px;
+        letter-spacing:2px;
+      }
+      th,
+      td {
+        border: 1px solid black;
+        padding: 8px;
+        text-align: center;
+        padding:30px;
+        font-size: 35px;
+        
+        
+      }
+      th {
+        background-color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <div class="navbar" id="navbar">
+          <div class="logo">
+              <div class="image1">
+                <a href="#"><img src="images\topi-removebg-preview.png" alt=""></a>
+              </div>
+              <div class="image2">
+                 <a href="#"><img src="images\timescramble.png" alt="photo"></a>
+              </div>
+            </div>
+            <div class="nav-list">
+              <a href="homepage.html">Home</a>
+              <a href="#feature">Features</a>
+              <a href="about.html">Our team</a>
+              <a href="create.html">Create Timetable</a>
+              <a href="timetablegenerator.html">Generate Timetable</a>
+              <a href="contactus.html">Contact Us</a>
+              <a href="login.html">Login</a>
+          </div>
+      </div>
+
+    <div class="heading">TimeTable Generator</div>
+    <div class="total_sub">
+      <label for="number_of_subject">Total Number of Subjects:</label>
+      <input
+        type="number"
+        id="number_of_subject"
+        min="1"
+        max="10"
+        onchange="showInputs()"
+      />
+    </div>
+
+    <form id="subjectForm">
+      <div id="subjectFields">
+        <!-- Subject input fields will be dynamically added here -->
+      </div>
+
+     <div class="total_lec">
+        <label for="number_of_lecture"
+          >Total Number of Lectures in a Day:</label
+        >
+        <input
+          type="number"
+          id="number_of_lecture"
+          onchange="total_lecture()"
+        />
+      </div>
+
+         <div id="timefield">
+        
+      </div>
+     </div> <!-- corrected closing tag for div -->
+
+     <div class="button">
+      <button type="submit" value="Submit">Generate</button>
+     </div>
+    </form>
+
+    <div class="container">
+      <table id="timetable">
+      <thead>
+        <tr></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    </div>
+
+    <script>
+      function showInputs() {
+        var numSubjects = document.getElementById("number_of_subject").value;
+        var subjectFields = document.getElementById("subjectFields");
+        subjectFields.innerHTML = ""; // Clear previous fields
+
+        for (var i = 1; i <= numSubjects; i++) {
+          var div = document.createElement("div");
+          div.className = "subject-input";
+          div.innerHTML = `
+           <div class="form-container">
+          <div class="form-control">
+            <label for="subject${i}">Subject Name:</label>
+            <input
+              type="text"
+              id="subject${i}"
+              name="subject${i}"
+              placeholder="eg: Physics"
+            />
+          </div>
+          <div class="form-control">
+            <label for="teacher${i}">Teacher Name:</label>
+            <input
+              type="text"
+              id="teacher${i}"
+              name="teacher${i}"
+              placeholder="eg: John"
+            />
+          </div>
+        </div>
+        `;
+          subjectFields.appendChild(div);
+        }
+      }
+
+      function total_lecture() {
+        var total_lec = document.getElementById("number_of_lecture").value;
+        var timeField = document.getElementById("timefield");
+        var form = document.getElementById("subjectForm");
+        
+        timeField.innerHTML = ""; // Clear previous fields
+
+        for (var i = 1; i <= total_lec; i++) {
+          var div1 = document.createElement("div");
+          div1.className = "time-slot";
+          div1.innerHTML = `
+            <label for="timeslots${i}">Time Slots for Lecture ${i}:</label>
+            <input
+              type="text"
+              id="timeslots${i}"
+              name="timeslots${i}"
+              placeholder="eg: 9am-10am"
+            />
+          `;
+          timeField.appendChild(div1);
+        }
+      }
+
+      document.getElementById("subjectForm").addEventListener("submit", function (event) {
+        event.preventDefault(); // Prevent form submission
+         fetched_data();
+      });
+    </script>
+    <script src="timetablegenerator.js"></script>
+  </body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Timetable Generator</title>
+<link rel="stylesheet" type="text/css" href="create.css"/>
+</head>
+<body>
+<div class="navbar" id="navbar">
+          <div class="logo">
+              <div class="image1">
+                <a href="#"><img src="images\topi-removebg-preview.png" alt=""></a>
+              </div>
+              <div class="image2">
+                 <a href="#"><img src="images\timescramble.png" alt=""></a>
+              </div>
+            </div>
+            <div class="nav-list">
+              <a href="homepage.html">Home</a>
+              <a href="#feature">Features</a>
+              <a href="about.html">Our team</a>
+              <a href="create.html">Create Timetable</a>
+              <a href="timetablegenerator.html">Generate Timetable</a>
+              <a href="contactus.html">Contact Us</a>
+              <a href="login.html">Login</a>
+          </div>
+      </div>
+<div class="heading">
+  <h2>Create Timetable </h2>
+</div>
+
+<div class="lecture-container">
+    <label for="numLectures">Enter Number of Lectures:</label>
+    <input type="number" id="numLectures" name="numLectures" min="1" required><br>
+    <button onclick="generateTimeSlots()">Generate Time Slots</button>
+</div>
+
+<div class="table_container">
+  <div id="timeSlotsContainer"></div>
+  <div id="timeslotbtn"></div>
+<div id="timetableContainer"></div>
+</div>
+
+<script src="create.js"></script>
+</body>
+</html>

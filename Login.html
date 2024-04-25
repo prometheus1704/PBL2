@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="icon" href="Images/logo.jpg" />
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="form-container sign-up">
+            <form action="#" id="signup">
+                <h1>Create Account</h1>
+                <div class="social-icons">
+                    <a href="#"class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#"class="icon"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email for registeration</span>
+                <div class="radio">
+                    <label for="user"><input type="radio" name="Signup" id="user" value="user"/> User</label>
+                    <label for="organisation"><input type="radio" name="Signup" id="organisation" value="organisation"/> Faculty</label>
+                </div>
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <script>
+            document.getElementById('signup').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const Signup = document.querySelector('input[name="Signup"]:checked').value;
+    
+            // Redirect based on account type
+            if (Signup === 'user') {
+                window.location.href = 'user_dashboard.html'; // Redirect to user dashboard
+            } else  {
+                window.location.href = 'organization_dashboard.html'; // Redirect to organization dashboard
+            }
+            });
+        </script>
+
+
+        <div class="form-container sign-in">
+            <form action="#">
+                <h1>Sign In</h1>
+                <div class="social-icons">
+                    <a href="#"class="icon"><i class="fa-brands fa-google-plus-g"></i></a>
+                    <a href="#"class="icon"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="#"class="icon"><i class="fa-brands fa-github"></i></a>
+                    <a href="#"class="icon"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+                <span>or use your email password</span>
+                <input type="email" placeholder="Email" id="email">
+                <input type="password" placeholder="Password">
+                <!-- <button onclick="sendOTP()">Send OTP</button>
+
+                <script>
+                    function sendOTP() {
+                    const email = document.getElementById('email');
+                    const otpverify = document.getElementById('sign-in')[0];
+
+                    let otp_val = Math.floor(Math.random() * 10000);
+
+                    let emailbody = `<h2>Your OTP is </h2>${otp_val}`;
+                    Email.send({
+                        SecureToken : "869409d2-45e1-47b0-a0e4-3894528420fd",
+                        To : email.value,
+                        From : "sathedhanesh1@gmail.com",
+                        Subject : "Email OTP using JavaScript",
+                        Body : emailbody,
+                    }).then(
+
+                    message => {
+                        if (message === "OK") {
+                        alert("OTP sent to your email " + email.value);
+
+                        otpverify.style.display = "flex";
+                        const otp_inp = document.getElementById('otp_inp');
+                        const otp_btn = document.getElementById('otp-btn');
+
+                        otp_btn.addEventListener('click', () => {
+                        if (otp_inp.value == otp_val) {
+                            alert("Email address verified...");
+                        }
+                        else {
+                            alert("Invalid OTP");
+                        }
+                    })
+                }
+            }
+        );
+    }
+                </script> -->
+                <!-- <div class="captcha">
+                    <div class="preview"></div>
+                    <div class="captcha-form">
+                        <input type="text" id="captcha-form" placeholder="Enter captcha text">
+                        <button class="captcha-refresh">
+                            <i class="fa fa-refresh"></i>
+                        </button>
+                    </div>
+                </div> -->
+                <a href="#">Forget your Password</a> 
+                <button id="sign-in">Sign In</button>
+            </form>
+        </div>
+        <div class="toggle-container">
+            <div class="toggle">
+                <div class="toggle-panel toggle-left">
+                    <h1>Welcome Back !</h1>
+                    <p>Enter your personal details to use all features of site</p>
+                    <button class="hidden" id="login">Sign In</button>
+                </div>
+                <div class="toggle-panel toggle-right">
+                    <h1>Welcome Back</h1>
+                    <p>Enter your personal details to use all features of site</p>
+                    <button class="hidden" id="register">Sign Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
